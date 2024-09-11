@@ -10,7 +10,7 @@ A logical data model must contain:
 In this homework, I have selected "Customer" and "Customer-purchases' Tables:
 - "Customer", "Customer_Purchases"
 - Column names addressed in the diagram along with the datatypes
-- There is a one tp many relationship between those tables because one customer can make many purchases.
+- There is a one-to-many relationship between those tables because one customer can make many purchases.
 
 Please find the diagram below;
 
