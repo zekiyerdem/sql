@@ -1,7 +1,7 @@
 # Homework 1: farmersmarket.db
 #Zekiye_Erdem_edition
 
-<img width="301" alt="Screenshot 2024-09-10 195708" src="https://github.com/user-attachments/assets/7f0a754e-40b4-4bfd-bf91-1171bd1e15ea">
+
 
 - Due on Thursday, September 12 at 11:59pm
 - Weight: 8% of total grade
