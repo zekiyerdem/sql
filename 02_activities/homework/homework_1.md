@@ -1,6 +1,5 @@
 # Homework 1: farmersmarket.db
 #Zekiye_Erdem_edition
-<img width="301" alt="Screenshot 2024-09-10 195708" src="https://github.com/user-attachments/assets/636ece00-e246-4d38-a610-2a8fec2cfef9">
 
 
 - Due on Thursday, September 12 at 11:59pm
