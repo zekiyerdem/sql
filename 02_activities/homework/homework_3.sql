@@ -64,9 +64,24 @@ VALUES (10, 'Thomass Superfood Store', 'Fresh Focused', 'Thomas', 'Rosenthal');
 HINT: you might need to search for strfrtime modifers sqlite on the web to know what the modifers for month 
 and year are! */
 
+
+SELECT customer_id,
+       STRFTIME('%m', market_date) AS month,
+       STRFTIME('%Y', market_date) AS year
+FROM customer_purchases;
+
+-- Create separate columns as month and year to see the purchases
+
 /* 2. Using the previous query as a base, determine how much money each customer spent in April 2019. 
 Remember that money spent is quantity*cost_to_customer_per_qty. 
 
 HINTS: you will need to AGGREGATE, GROUP BY, and filter...
 but remember, STRFTIME returns a STRING for your WHERE statement!! */
+
+SELECT customer_id,
+	   SUM(cost_to_customer_per_qty * quantity) AS total_spent_in_April_2019
+FROM customer_purchases
+WHERE STRFTIME('%m', market_date)= '04' AND STRFTIME('%Y', market_date) = '2019'
+GROUP BY customer_id;
+
 
