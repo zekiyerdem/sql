@@ -84,4 +84,13 @@ FROM customer_purchases
 WHERE STRFTIME('%m', market_date)= '04' AND STRFTIME('%Y', market_date) = '2019'
 GROUP BY customer_id;
 
+-- In some other homeworks it has stating that is for 2022 which makes sense because there is nothing for 2019 in the db. so alternatively
+
+SELECT customer_id,
+	   SUM(cost_to_customer_per_qty * quantity) AS total_spent_in_April_2022
+FROM customer_purchases
+WHERE STRFTIME('%m', market_date)= '04' AND STRFTIME('%Y', market_date) = '2022'
+GROUP BY customer_id;
+
+-- we can chaneg the code above if we want to do such a filtering
 
