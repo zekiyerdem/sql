@@ -29,10 +29,10 @@ having total_spent>2000
 order by c.customer_last_name, c.customer_first_name;
 
 --*Explanation
--- I have join customer and customer purchases table to be able see the customer last name and first name
+-- I have joined the customer and customer purchases table to be able to see the customer's last name and first name
 -- we need to use the having to filter the spent that is more than $2000
--- Also I have created a new column that will calculate the total spent by multipling cost to customer and total quantity they have purchase
--- lastly we order by last name and then first name which is asked in the question, I also add the customer is in the filtered table to distungish the cusotmer better if there is anyone has same name and surname
+-- Also I have created a new column that will calculate the total spent by multiplying the cost to the customer and the total quantity they have purchase
+-- Lastly, we order by last name and then first name which is asked in the question, I also added the customer in the filtered table to distungish the cusotmer better if there is anyone has same name and surname
 
 --Temp Table
 /* 1. Insert the original vendor table into a temp.new_vendor and then add a 10th vendor: 
@@ -45,6 +45,16 @@ When inserting the new vendor, you need to appropriately align the columns to be
 -> To insert the new row use VALUES, specifying the value you want for each column:
 VALUES(col1,col2,col3,col4,col5) 
 */
+
+
+-- Create temp table name new_vendor from the vendor table
+DROP TABLE IF EXISTS new_vendor;
+CREATE TEMP TABLE new_vendor AS
+SELECT * FROM vendor;
+
+-- Insert the 10th vendor into the temp new_vendor table
+INSERT INTO new_vendor
+VALUES (10, 'Thomass Superfood Store', 'Fresh Focused', 'Thomas', 'Rosenthal');
 
 
 
