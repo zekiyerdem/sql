@@ -112,7 +112,7 @@ This approach updates the existing customer address directly, overwriting the pr
 - `CustomerID` (Foreign Key to Customer)
 - `Street`
 - `City`
-- `State`
+- `Province`
 - `PostalCode`
 - `Country`
 
@@ -126,7 +126,7 @@ This approach creates a new entry for each address change, retaining the old add
 - `CustomerID` (Foreign Key to Customer)
 - `Street`
 - `City`
-- `State`
+- `Province`
 - `PostalCode`
 - `Country`
 - `StartDate`
