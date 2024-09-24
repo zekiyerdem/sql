@@ -5,8 +5,52 @@ Create a logical model for a small bookstore. 📚
 
 At the minimum it should have employee, order, sales, customer, and book entities (tables). Determine sensible column and table design based on what you know about these concepts. Keep it simple, but work out sensible relationships to keep tables reasonably sized. Include a date table. There are several tools online you can use, I'd recommend [_Draw.io_](https://www.drawio.com/) or [_LucidChart_](https://www.lucidchart.com/pages/).
 
-
+Please find the Entity Relationship diagram below;
 ![assignment_SQL](https://github.com/user-attachments/assets/af417aa0-1503-446f-85ab-04411defe9fd)
+Entities and Relationships:
+Employee ➔ Order
+
+Relation: One-to-Many
+Key: EmployeeID in Order (Foreign Key)
+Description: Each order is handled by one employee, but each employee can handle many orders.
+Customer ➔ Order
+
+Relation: One-to-Many
+Key: CustomerID in Order (Foreign Key)
+Description: A customer can place multiple orders, but each order is associated with only one customer.
+Order ➔ OrderDetails
+
+Relation: One-to-Many
+Key: OrderID in OrderDetails (Foreign Key)
+Description: An order can contain multiple books (items), but each order detail is linked to one specific order.
+Book ➔ OrderDetails
+
+Relation: One-to-Many
+Key: BookID in OrderDetails (Foreign Key)
+Description: A book can appear in multiple order details (i.e., sold in many orders), but each entry in order details represents a specific book.
+Order ➔ Sales
+
+Relation: One-to-Many
+Key: OrderID in Sales (Foreign Key)
+Description: Each order generates sales records for the books in the order. A single order can lead to multiple sales records (one for each book sold).
+Book ➔ Sales
+
+Relation: One-to-Many
+Key: BookID in Sales (Foreign Key)
+Description: Each book can appear in multiple sales records, but each sales record is for a specific book sold in an order.
+Date ➔ Order
+
+Relation: One-to-Many
+Key: DateID in Order (Foreign Key)
+Description: Each order is associated with a specific date, but each date can have many orders.
+Summary of Foreign Keys:
+EmployeeID in Order references Employee.
+CustomerID in Order references Customer.
+OrderID in OrderDetails references Order.
+BookID in OrderDetails references Book.
+OrderID in Sales references Order.
+BookID in Sales references Book.
+DateID in Order references Date.
 
 ## Question 2
 We want to create employee shifts, splitting up the day into morning and evening. Add this to the ERD.
