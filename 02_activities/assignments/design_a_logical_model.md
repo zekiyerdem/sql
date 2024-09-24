@@ -5,6 +5,7 @@ Create a logical model for a small bookstore. 📚
 
 At the minimum it should have employee, order, sales, customer, and book entities (tables). Determine sensible column and table design based on what you know about these concepts. Keep it simple, but work out sensible relationships to keep tables reasonably sized. Include a date table. There are several tools online you can use, I'd recommend [_Draw.io_](https://www.drawio.com/) or [_LucidChart_](https://www.lucidchart.com/pages/).
 
+## Question 1 Answer
 Please find the Entity Relationship diagram below;
 ![assignment_SQL](https://github.com/user-attachments/assets/af417aa0-1503-446f-85ab-04411defe9fd)
 Entities and Relationships:
@@ -57,6 +58,9 @@ Entities and Relationships:
 ## Question 2
 We want to create employee shifts, splitting up the day into morning and evening. Add this to the ERD.
 
+## Question 2 Answer
+
+Please find the updated ERD below;
 
 ![assignment_SQL2](https://github.com/user-attachments/assets/f3d5cf70-54e0-4278-91d5-1fb93da243e1)
 
@@ -98,7 +102,7 @@ _Hint, search type 1 vs type 2 slowly changing dimensions._
 
 Bonus: Are there privacy implications to this, why or why not?
 
-## Question 3: Customer Address Table Architecture
+## Question 3 Asnwer: Customer Address Table Architecture
 
 ### Option 1: Overwriting Customer Address (Type 1)
 This approach updates the existing customer address directly, overwriting the previous information. The table structure looks like this:
