@@ -1,12 +1,77 @@
 # Assignment 1: Design a Logical Model
+# Name: Zekiye ERDEM
 
 ## Question 1
 Create a logical model for a small bookstore. 📚
 
 At the minimum it should have employee, order, sales, customer, and book entities (tables). Determine sensible column and table design based on what you know about these concepts. Keep it simple, but work out sensible relationships to keep tables reasonably sized. Include a date table. There are several tools online you can use, I'd recommend [_Draw.io_](https://www.drawio.com/) or [_LucidChart_](https://www.lucidchart.com/pages/).
 
+## Question 1 Answer
+Please find the Entity Relationship diagram below;
+![assignment_SQL](https://github.com/user-attachments/assets/af417aa0-1503-446f-85ab-04411defe9fd)
+Entities and Relationships:
+
+## Employee ➔ Order
+
+**Relation: One-to-Many**
+**Key: EmployeeID in Order (Foreign Key)**
+***Description: Each order is handled by one employee, but each employee can handle many orders.***
+
+## Customer ➔ Order
+**Relation: One-to-Many**
+**Key: CustomerID in Order (Foreign Key)**
+***Description: A customer can place multiple orders, but each order is associated with only one customer.***
+
+## Order ➔ OrderDetails
+**Relation: One-to-Many**
+**Key: OrderID in OrderDetails (Foreign Key)**
+***Description: An order can contain multiple books (items), but each order detail is linked to one specific order.***
+
+## Book ➔ OrderDetails
+**Relation: One-to-Many**
+**Key: BookID in OrderDetails (Foreign Key)**
+***Description: A book can appear in multiple order details (i.e., sold in many orders), but each entry in order details represents a specific book.***
+
+## Order ➔ Sales
+**Relation: One-to-Many**
+**Key: OrderID in Sales (Foreign Key)**
+***Description: Each order generates sales records for the books in the order. A single order can lead to multiple sales records (one for each book sold).***
+
+## Book ➔ Sales
+**Relation: One-to-Many**
+**Key: BookID in Sales (Foreign Key)**
+***Description: Each book can appear in multiple sales records, but each sales record is for a specific book sold in an order.***
+
+## Date ➔ Order
+**Relation: One-to-Many**
+**Key: DateID in Order (Foreign Key)**
+***Description: Each order is associated with a specific date, but each date can have many orders.***
+
 ## Question 2
 We want to create employee shifts, splitting up the day into morning and evening. Add this to the ERD.
+
+## Question 2 Answer
+
+Please find the updated ERD below;
+
+![assignment_SQL2](https://github.com/user-attachments/assets/f3d5cf70-54e0-4278-91d5-1fb93da243e1)
+
+## Shift Management: Employee, Shifts, and Dates
+
+#### **Employee** ➔ **Employee_Shift**
+- **Relation**: One-to-Many
+- **Foreign Key**: `EmployeeID` in **Employee_Shift**
+- **Description**: An employee can be assigned to multiple shifts, but each shift assignment is linked to one employee.
+
+#### **Shift** ➔ **Employee_Shift**
+- **Relation**: One-to-Many
+- **Foreign Key**: `ShiftID` in **Employee_Shift**
+- **Description**: A shift (e.g., morning or evening) can be assigned to many employees, but each shift assignment entry relates to one specific shift.
+
+#### **Date** ➔ **Employee_Shift**
+- **Relation**: One-to-Many
+- **Foreign Key**: `DateID` in **Employee_Shift**
+- **Description**: Each shift assignment happens on a specific date, and one date can have many shift assignments (for different employees or shifts).
 
 ## Question 3
 The store wants to keep customer addresses. Propose two architectures for the CUSTOMER_ADDRESS table, one that will retain changes, and another that will overwrite. Which is type 1, which is type 2?
@@ -14,17 +79,61 @@ The store wants to keep customer addresses. Propose two architectures for the CU
 _Hint, search type 1 vs type 2 slowly changing dimensions._
 
 Bonus: Are there privacy implications to this, why or why not?
-```
-Your answer...
-```
+
+## Question 3 Answer: Customer Address Table Architecture
+
+### Option 1: Overwriting Customer Address (Type 1)
+This approach updates the existing customer address directly, overwriting the previous information. The table structure looks like this:
+
+**Customer_Address**
+- `AddressID` (Primary Key)
+- `CustomerID` (Foreign Key to Customer)
+- `Street`
+- `City`
+- `Province`
+- `PostalCode`
+- `Country`
+
+When a customer moves, their old address is replaced with the new one, and there is no record of the previous address. This is a **Type 1 Slowly Changing Dimension**.
+
+### Option 2: Retaining Address History (Type 2)
+This approach creates a new entry for each address change, retaining the old addresses as history:
+
+**Customer_Address**
+- `AddressID` (Primary Key)
+- `CustomerID` (Foreign Key to Customer)
+- `Street`
+- `City`
+- `Province`
+- `PostalCode`
+- `Country`
+- `StartDate`
+- `EndDate` (NULL if current address)
+
+When a customer updates their address, a new row is added, and the old row is marked with an end date. This is a **Type 2 Slowly Changing Dimension**.
+
+### Bonus: Privacy Implications
+Retaining previous addresses (**Type 2**) could raise privacy concerns, especially if the data includes sensitive information. Keeping historical data increases the risk of exposure if the data is breached. 
+
+It’s essential to ensure that this data is encrypted and used in accordance with data privacy laws such as **GDPR** or **CCPA**.
 
 ## Question 4
 Review the AdventureWorks Schema [here](https://i.stack.imgur.com/LMu4W.gif)
 
 Highlight at least two differences between it and your ERD. Would you change anything in yours?
-```
-Your answer...
-```
+
+## Question 4: Comparison to the AdventureWorks Schema
+
+From the **AdventureWorks** schema, the main difference is on the 1 **purchasing** and 2 **production** side. 
+
+1- Since this is a bookstore, I never considered the **production** aspect, but AdventureWorks clearly includes that. This makes sense for a company involved in manufacturing, but for a bookstore, this isn't necessary.
+
+2- In terms of **purchasing**, AdventureWorks keeps records of **vendor** and **shipment** details. For my model, I imagined a small, local bookstore that doesn’t have an online store or large vendor management needs, so I kept things simple. 
+
+I also liked the detailed approach to the **HR** side in AdventureWorks, which includes employee records, shift management, and sales tracking. This could be very useful if our bookstore decides to expand. For a small shop, the model I created works well, but if the store grows, adopting some of the more detailed elements from AdventureWorks—such as vendor tracking and advanced HR features—would be beneficial.
+
+Overall, I aimed to imitate a **small, local bookstore**, but for future growth, the **AdventureWorks** model is definitely well-designed and could inspire improvements to my own.
+
 
 # Criteria
 
