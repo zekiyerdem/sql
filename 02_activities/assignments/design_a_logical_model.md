@@ -9,21 +9,16 @@ Please find the Entity Relationship diagram below;
 ![assignment_SQL](https://github.com/user-attachments/assets/af417aa0-1503-446f-85ab-04411defe9fd)
 Entities and Relationships:
 
-Employee ➔ Order
+## Employee ➔ Order
 
-Relation: One-to-Many
-
+**Relation: One-to-Many**
 Key: EmployeeID in Order (Foreign Key)
+### Description: Each order is handled by one employee, but each employee can handle many orders.
 
-Description: Each order is handled by one employee, but each employee can handle many orders.
-
-Customer ➔ Order
-
-Relation: One-to-Many
-
+## Customer ➔ Order
+**Relation: One-to-Many**
 Key: CustomerID in Order (Foreign Key)
-
-Description: A customer can place multiple orders, but each order is associated with only one customer.
+### Description: A customer can place multiple orders, but each order is associated with only one customer.
 
 Order ➔ OrderDetails
 
