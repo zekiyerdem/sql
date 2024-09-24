@@ -97,9 +97,43 @@ The store wants to keep customer addresses. Propose two architectures for the CU
 _Hint, search type 1 vs type 2 slowly changing dimensions._
 
 Bonus: Are there privacy implications to this, why or why not?
-```
-Your answer...
-```
+
+## Question 3: Customer Address Table Architecture
+
+### Option 1: Overwriting Customer Address (Type 1)
+This approach updates the existing customer address directly, overwriting the previous information. The table structure looks like this:
+
+**Customer_Address**
+- `AddressID` (Primary Key)
+- `CustomerID` (Foreign Key to Customer)
+- `Street`
+- `City`
+- `State`
+- `PostalCode`
+- `Country`
+
+When a customer moves, their old address is replaced with the new one, and there is no record of the previous address. This is a **Type 1 Slowly Changing Dimension**.
+
+### Option 2: Retaining Address History (Type 2)
+This approach creates a new entry for each address change, retaining the old addresses as history:
+
+**Customer_Address**
+- `AddressID` (Primary Key)
+- `CustomerID` (Foreign Key to Customer)
+- `Street`
+- `City`
+- `State`
+- `PostalCode`
+- `Country`
+- `StartDate`
+- `EndDate` (NULL if current address)
+
+When a customer updates their address, a new row is added, and the old row is marked with an end date. This is a **Type 2 Slowly Changing Dimension**.
+
+### Bonus: Privacy Implications
+Retaining previous addresses (**Type 2**) could raise privacy concerns, especially if the data includes sensitive information. Keeping historical data increases the risk of exposure if the data is breached. 
+
+It’s essential to ensure that this data is encrypted and used in accordance with data privacy laws such as **GDPR** or **CCPA**.
 
 ## Question 4
 Review the AdventureWorks Schema [here](https://i.stack.imgur.com/LMu4W.gif)
