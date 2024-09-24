@@ -1,4 +1,5 @@
 # Assignment 1: Design a Logical Model
+# Name: Zekiye ERDEM
 
 ## Question 1
 Create a logical model for a small bookstore. 📚
