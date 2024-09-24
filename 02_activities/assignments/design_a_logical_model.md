@@ -57,6 +57,40 @@ Entities and Relationships:
 ## Question 2
 We want to create employee shifts, splitting up the day into morning and evening. Add this to the ERD.
 
+
+![assignment_SQL2](https://github.com/user-attachments/assets/f3d5cf70-54e0-4278-91d5-1fb93da243e1)
+
+## Shift Management: Employee, Shifts, and Dates
+
+#### **Employee** ➔ **Employee_Shift**
+- **Relation**: One-to-Many
+- **Foreign Key**: `EmployeeID` in **Employee_Shift**
+- **Description**: An employee can be assigned to multiple shifts, but each shift assignment is linked to one employee.
+
+#### **Shift** ➔ **Employee_Shift**
+- **Relation**: One-to-Many
+- **Foreign Key**: `ShiftID` in **Employee_Shift**
+- **Description**: A shift (e.g., morning or evening) can be assigned to many employees, but each shift assignment entry relates to one specific shift.
+
+#### **Date** ➔ **Employee_Shift**
+- **Relation**: One-to-Many
+- **Foreign Key**: `DateID` in **Employee_Shift**
+- **Description**: Each shift assignment happens on a specific date, and one date can have many shift assignments (for different employees or shifts).
+
+---
+
+### Foreign Key Summary
+- `EmployeeID` in **Order** references **Employee**.
+- `CustomerID` in **Order** references **Customer**.
+- `OrderID` in **OrderDetails** references **Order**.
+- `BookID` in **OrderDetails** references **Book**.
+- `OrderID` in **Sales** references **Order**.
+- `BookID` in **Sales** references **Book**.
+- `DateID` in **Order** references **Date**.
+- `EmployeeID` in **Employee_Shift** references **Employee**.
+- `ShiftID` in **Employee_Shift** references **Shift**.
+- `DateID` in **Employee_Shift** references **Date**.
+
 ## Question 3
 The store wants to keep customer addresses. Propose two architectures for the CUSTOMER_ADDRESS table, one that will retain changes, and another that will overwrite. Which is type 1, which is type 2?
 
