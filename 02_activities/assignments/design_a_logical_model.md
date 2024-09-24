@@ -106,7 +106,15 @@ Review the AdventureWorks Schema [here](https://i.stack.imgur.com/LMu4W.gif)
 
 Highlight at least two differences between it and your ERD. Would you change anything in yours?
 ```
-Your answer...
+## Question 4: Comparison to the AdventureWorks Schema
+
+From the **AdventureWorks** schema, the main difference is on the **purchasing** and **production** side. Since this is a bookstore, I never considered the **production** aspect, but AdventureWorks clearly includes that. This makes sense for a company involved in manufacturing, but for a bookstore, this isn't necessary.
+
+In terms of **purchasing**, AdventureWorks keeps records of **vendor** and **shipment** details. For my model, I imagined a small, local bookstore that doesn’t have an online store or large vendor management needs, so I kept things simple. 
+
+I also liked the detailed approach to the **HR** side in AdventureWorks, which includes employee records, shift management, and sales tracking. This could be very useful if our bookstore decides to expand. For a small shop, the model I created works well, but if the store grows, adopting some of the more detailed elements from AdventureWorks—such as vendor tracking and advanced HR features—would be beneficial.
+
+Overall, I aimed to imitate a **small, local bookstore**, but for future growth, the **AdventureWorks** model is definitely well-designed and could inspire improvements to my own.
 ```
 
 # Criteria
