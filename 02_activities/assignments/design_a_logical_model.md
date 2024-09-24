@@ -11,8 +11,11 @@ Entities and Relationships:
 Employee ➔ Order
 
 Relation: One-to-Many
+
 Key: EmployeeID in Order (Foreign Key)
+
 Description: Each order is handled by one employee, but each employee can handle many orders.
+
 Customer ➔ Order
 
 Relation: One-to-Many
