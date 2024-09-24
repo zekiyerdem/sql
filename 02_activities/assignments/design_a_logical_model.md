@@ -102,7 +102,7 @@ _Hint, search type 1 vs type 2 slowly changing dimensions._
 
 Bonus: Are there privacy implications to this, why or why not?
 
-## Question 3 Asnwer: Customer Address Table Architecture
+## Question 3 Answer: Customer Address Table Architecture
 
 ### Option 1: Overwriting Customer Address (Type 1)
 This approach updates the existing customer address directly, overwriting the previous information. The table structure looks like this:
